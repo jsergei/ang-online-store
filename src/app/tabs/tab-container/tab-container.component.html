@@ -1,0 +1,13 @@
+<div class="tab-header">
+    <ng-container *ngIf="headerShown">
+        <div class="header-item"
+            [ngClass]="{'active': activeTabIndex === i}"
+            *ngFor="let tab of tabs; let i = index"
+            (click)="setActive(i)">
+            <ng-container *ngTemplateOutlet="tab.headTemplate"></ng-container>
+        </div>
+    </ng-container>
+</div>
+<div class="tab-body">
+    <ng-container #bodyTarget></ng-container>
+</div>

@@ -1,0 +1,49 @@
+<create-product (createProduct)="onProductCreated($event)">
+</create-product>
+<product-gallery [products]="products"
+                 (deleteProduct)="onProductDeleted($event)">
+</product-gallery>
+
+<div class="injection-container">
+    <ng-template #tpl>
+        <div>Hello there</div>
+        <div>How are you?</div>
+        <span class="edit-icon" *ngIf="showText">TEXT</span>
+    </ng-template>
+
+    <div templateInjectionPoint *ngTemplateOutlet="tpl"></div>
+</div>
+
+<button (click)="flipNumber()">Show 1</button>
+<button (click)="flipText()">Show TEXT</button>
+<button (click)="headerTurnOn()">Turn on the header</button>
+<button (click)="detectChanges()">Detect changes</button>
+
+<tab-container [headerShown]="headerShown">
+    <tab>
+        <tab-head>
+            View <span class="view-icon" *ngIf="showNumber">1</span>
+        </tab-head>
+        <tab-body>
+            View body
+        </tab-body>
+    </tab>
+    <tab>
+        <tab-head>
+            Edit
+        </tab-head>
+        <tab-body>
+            Edit body
+        </tab-body>
+    </tab>
+    <tab>
+        <tab-head>
+            Administer <span class="admin-icon">TEXT</span>
+        </tab-head>
+        <tab-body>
+            Admin body
+        </tab-body>
+    </tab>
+</tab-container>
+
+<router-outlet></router-outlet>

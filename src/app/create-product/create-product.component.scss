@@ -1,0 +1,15 @@
+:host {
+    margin: 20px;
+}
+
+.input-control {
+    span {
+        display: inline-block;
+        width: 70px;
+        margin-right: 10px;
+    }
+}
+
+.input-control + .input-control {
+    margin-top: 5px;
+}

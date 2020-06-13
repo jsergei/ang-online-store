@@ -1,0 +1,11 @@
+<div>
+    <div class="input-control">
+        <span>Name</span>
+        <input #name>
+    </div>
+    <div class="input-control">
+        <span>Description</span>
+        <input #description>
+    </div>
+    <button (click)="create(name.value, description.value)" [disabled]="!name || !description">Create product</button>
+</div>

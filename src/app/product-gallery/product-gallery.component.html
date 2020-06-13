@@ -1,0 +1,21 @@
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of products">
+            <td>{{ product.name }}</td>
+            <td>{{ product.description }}</td>
+            <td>
+                <button (click)="delete(product.id)">X</button>
+            </td>
+        </tr>
+        <tr *ngIf="products.length === 0">
+            <td colspan="3">There are no products</td>
+        </tr>
+    </tbody>
+</table>
