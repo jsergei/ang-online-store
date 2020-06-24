@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectorRef, ViewChild, TemplateRef, ViewContainerRef } from '@angular/core';
 
 import { Product } from './interfaces/product';
 
@@ -8,6 +8,9 @@ import { Product } from './interfaces/product';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+    @ViewChild('tpl') tpl: TemplateRef<any>;
+    @ViewChild('templateInjectionPoint', {read: ViewContainerRef}) injectionPoint: ViewContainerRef;
+
     showNumber = false;
     showText = false;
     headerShown = false;
@@ -32,18 +35,20 @@ export class AppComponent {
     }
 
     flipNumber(): void {
-        this.showNumber != this.showNumber;
+        this.showNumber = !this.showNumber;
     }
 
     flipText(): void {
-        this.showText != this.showText;
+        this.showText = !this.showText;
     }
 
     headerTurnOn(): void {
-        this.headerShown = true;
+        this.headerShown = !this.headerShown;
     }
 
-    detectChanges(): void {
-        this.cd.detectChanges();
+    createTemplate(): void {
+        // const viewRef = this.tpl.createEmbeddedView(null);
+        // , { $implicit: {showText: this.showText} }
+        this.injectionPoint.createEmbeddedView(this.tpl);
     }
 }

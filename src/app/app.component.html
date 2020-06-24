@@ -8,16 +8,16 @@
     <ng-template #tpl>
         <div>Hello there</div>
         <div>How are you?</div>
-        <span class="edit-icon" *ngIf="showText">TEXT</span>
+        <span *ngIf="showText">TEXT</span>
     </ng-template>
 
-    <div templateInjectionPoint *ngTemplateOutlet="tpl"></div>
+    <div #templateInjectionPoint></div>
 </div>
 
 <button (click)="flipNumber()">Show 1</button>
 <button (click)="flipText()">Show TEXT</button>
 <button (click)="headerTurnOn()">Turn on the header</button>
-<button (click)="detectChanges()">Detect changes</button>
+<button (click)="createTemplate()">Create template</button>
 
 <tab-container [headerShown]="headerShown">
     <tab>
@@ -38,10 +38,10 @@
     </tab>
     <tab>
         <tab-head>
-            Administer <span class="admin-icon">TEXT</span>
+            Administer
         </tab-head>
         <tab-body>
-            Admin body
+            Admin body <span class="admin-icon" *ngIf="showText">TEXT</span>
         </tab-body>
     </tab>
 </tab-container>
